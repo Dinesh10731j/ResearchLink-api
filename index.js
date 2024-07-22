@@ -8,7 +8,8 @@ dotenv.config();
 
 const Port = process.env.PORT || 1000;
 
-server.use(morgan("combined"))
+server.use(morgan("combined"));
+server.use(express.json())
 server.use("/api",UserSignupRoute)
 
 DbConn().then(()=>{
