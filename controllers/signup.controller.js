@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const UserSignup = async (req, res) => {
   try {
+    const { name, email, password, affiliation } = req.body;
 
     const AlreadyExists = await UserModel.findOne({email});
 
@@ -12,7 +13,7 @@ const UserSignup = async (req, res) => {
     }
 
 
-    const { name, email, password, affiliation } = req.body;
+   
     const hashedPassword = await bcrypt.hash(password,10)
     const user = await UserModel.create({
       name: name,
