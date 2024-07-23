@@ -3,6 +3,15 @@ const bcrypt = require("bcryptjs");
 
 const UserSignup = async (req, res) => {
   try {
+
+    const AlreadyExists = await UserModel.findOne({email});
+
+
+    if(AlreadyExists){
+      return res.status(400).json({msg:'User already exits '});
+    }
+
+
     const { name, email, password, affiliation } = req.body;
     const hashedPassword = await bcrypt.hash(password,10)
     const user = await UserModel.create({
@@ -13,13 +22,7 @@ const UserSignup = async (req, res) => {
     });
 
 
-    const AlreadyExists = await UserModel.findOne({email});
-
-
-    if(AlreadyExists){
-      return res.status(400).json({msg:'User already exits '});
-    }
-
+   
     res.status(201).send({ data: user, success: true });
   } catch (err) {
     console.error("Error creating user:", err);
