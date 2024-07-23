@@ -8,12 +8,15 @@ const VerifyToken = (req, res, next) => {
   
     // Extract the token
     const token = authHeader.split(' ')[1];
+    console.log("The token is here ",token )
   
     // Check if token is valid (e.g., verify with JWT library)
     // Example with JWT library (jsonwebtoken)
     try {
       const decoded = jwt.verify(token, process.env.SecretKey);
       req.user = decoded.user;  // Attach decoded user information to request object
+
+      console.log('This is decoded jwt info',decoded)
       next(); // Pass control to the next middleware
     } catch (error) {
       console.error('Error verifying token:', error.message);
