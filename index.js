@@ -4,7 +4,8 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const DbConn = require("./utils/dbconn");
 const UserSignupRoute = require("./Routes/signup.routes");
-const cors = require("cors")
+const LoginRoute = require("./Routes/login.routes");
+const cors = require("cors");
 dotenv.config();
 
 const Port = process.env.PORT || 1000;
@@ -13,6 +14,7 @@ server.use(morgan("combined"));
 server.use(express.json());
 server.use(cors());
 server.use("/api", UserSignupRoute);
+server.use("/api", LoginRoute);
 
 DbConn().then(() => {
   server.listen(Port, () => {
