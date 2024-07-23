@@ -21,7 +21,9 @@ const UserSchema = new mongoose.Schema({
  affiliation:{
     type:String,
     required:[true,'Affiliation is required']
- }
+ },
+
+ token:String
 });
 
 
