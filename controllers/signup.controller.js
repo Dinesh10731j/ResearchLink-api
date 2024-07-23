@@ -13,11 +13,11 @@ const UserSignup = async (req, res) => {
     });
 
 
-    const AlreadyExists = await UserModel.find({email});
+    const AlreadyExists = await UserModel.findOne({email});
 
 
     if(AlreadyExists){
-      return res.status(400).json({msg:'User already exits '})
+      return res.status(400).json({msg:'User already exits '});
     }
 
     res.status(201).send({ data: user, success: true });
