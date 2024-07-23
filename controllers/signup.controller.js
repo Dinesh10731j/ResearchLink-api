@@ -12,6 +12,14 @@ const UserSignup = async (req, res) => {
       affiliation: affiliation,
     });
 
+
+    const AlreadyExists = await UserModel.find({email});
+
+
+    if(AlreadyExists){
+      return res.status(400).json({msg:'User already exits '})
+    }
+
     res.status(201).send({ data: user, success: true });
   } catch (err) {
     console.error("Error creating user:", err);

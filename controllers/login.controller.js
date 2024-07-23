@@ -9,7 +9,7 @@ const UserLogin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const LoginUser = await UserModel.find({ email });
+    const LoginUser = await UserModel.findOne({ email });
 
     if (!LoginUser) {
       return res
