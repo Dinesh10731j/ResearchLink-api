@@ -39,7 +39,7 @@ const UserLogin = async (req, res) => {
       if (err) {
         return res.status(500).json({ msg: "Error signing JWT token", success: false });
       }
-      res.status(201).json({ token: token, success: true });
+      res.status(201).json({ token: token, success: true ,data:LoginUser});
     });
     
   } catch (err) {
