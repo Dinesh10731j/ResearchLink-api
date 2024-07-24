@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const DbConn = require("./utils/dbconn");
 const UserSignupRoute = require("./Routes/signup.routes");
 const LoginRoute = require("./Routes/login.routes");
+const UploadPaperRoute = require("./Routes/uploadpaper.routes");
 const cors = require("cors");
 dotenv.config();
 
@@ -15,6 +16,7 @@ server.use(express.json());
 server.use(cors());
 server.use("/api", UserSignupRoute);
 server.use("/api", LoginRoute);
+server.use("/api", UploadPaperRoute);
 
 DbConn().then(() => {
   server.listen(Port, () => {
