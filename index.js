@@ -6,6 +6,7 @@ const DbConn = require("./utils/dbconn");
 const UserSignupRoute = require("./Routes/signup.routes");
 const LoginRoute = require("./Routes/login.routes");
 const UploadPaperRoute = require("./Routes/uploadpaper.routes");
+const UserProfileRoute = require("./Routes/getuserprofile.routes")
 const cors = require("cors");
 dotenv.config();
 
@@ -17,6 +18,7 @@ server.use(cors());
 server.use("/api", UserSignupRoute);
 server.use("/api", LoginRoute);
 server.use("/api", UploadPaperRoute);
+server.use("/api",UserProfileRoute);
 
 DbConn().then(() => {
   server.listen(Port, () => {
