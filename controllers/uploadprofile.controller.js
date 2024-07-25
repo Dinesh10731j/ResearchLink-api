@@ -7,7 +7,7 @@ const UploadProfile = async (req,res) =>{
 
         const {profile} = req.body;
 
-        const UserProfile = await UploadProfileModel.create(profile);
+        const UserProfile = await UploadProfileModel.create({profile});
 
         res.status(201).send({msg:'User profile uploaded successfully',data:UserProfile,success:true});
 
