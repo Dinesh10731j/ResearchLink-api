@@ -12,7 +12,7 @@ const UploadSchema = new mongoose.Schema({
 
   researchpaper: {
     type: String,
-    required: [true, "Description is required"],
+    required: [true, "Reasearchpaper is required"],
   },
 
   publishedDate:{
