@@ -1,11 +1,11 @@
-const UserModel = require("../models/signup.model");
+const UploadProfileModel= require("../models/uploadprofile.model");
 const GetUserProfile = async (req,res)=>{
 
     try{
 
-        const {userid} = req.params;
+        const {userprofile} = req.params;
 
-    const UserProfile = await UserModel.findById(userid);
+    const UserProfile = await UploadProfileModel.findById(userprofile);
    
 
     if(!UserProfile){
