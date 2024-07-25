@@ -1,4 +1,4 @@
-const UploadResearchPaperModel = require("../controllers/uploadpaper.controller");
+const UploadResearchPaperModel = require("../models/uploadpaper.model");
 
 const GetResearchPaper = async (req, res) => {
     try {
