@@ -8,6 +8,7 @@ const LoginRoute = require("./Routes/login.routes");
 const UploadPaperRoute = require("./Routes/uploadpaper.routes");
 const UserProfileRoute = require("./Routes/getuserprofile.routes");
 const UploadProfileRoute = require("./Routes/uploadprofile.routes");
+const UserDetailsRouter = require("./Routes/userdetails.routes")
 const cors = require("cors");
 dotenv.config();
 
@@ -21,6 +22,7 @@ server.use("/api", LoginRoute);
 server.use("/api", UploadPaperRoute);
 server.use("/api", UserProfileRoute);
 server.use("/api", UploadProfileRoute);
+server.use("/api",UserDetailsRouter);
 DbConn().then(() => {
   server.listen(Port, () => {
     console.log(`Server is listening to port:${Port}`);
