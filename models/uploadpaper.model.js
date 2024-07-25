@@ -17,7 +17,7 @@ const UploadSchema = new mongoose.Schema({
 
   publishedDate:{
     type:Date,
-    todayDate:Date.now(),
+    default:Date.now,
   }
 });
 
