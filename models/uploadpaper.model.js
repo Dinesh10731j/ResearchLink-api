@@ -14,6 +14,11 @@ const UploadSchema = new mongoose.Schema({
     type: String,
     required: [true, "Description is required"],
   },
+
+  publishedDate:{
+    type:Date,
+    todayDate:Date.now(),
+  }
 });
 
 const UploadResearchPaperModel = mongoose.model("Researchpaper", UploadSchema);
