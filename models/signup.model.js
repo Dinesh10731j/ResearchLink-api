@@ -23,7 +23,7 @@ const UserSchema = new Schema({
   },
 
 
-  profile:[{ type: Schema.Types.ObjectId,ref:'Userprofile' }],
+  profile:{ type: Schema.Types.ObjectId,ref:'Userprofile' },
    
   
 });
