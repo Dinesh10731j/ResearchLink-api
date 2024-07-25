@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
+const {Schema} = mongoose
 
-const UploadprofileSchema = new mongoose.Schema({
+const UploadprofileSchema = new Schema({
     profile:String,
 },{
-    user:{
-        type:mongoose.Schema.ObjectId,
-        ref:'UserModel'
-    }
+    user: [{ type: Schema.Types.ObjectId,ref:'User' }],
+        
+    
 });
 
 
