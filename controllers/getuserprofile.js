@@ -4,7 +4,7 @@ const GetUserProfile = async (req,res)=>{
     try{
 
         const {userprofile} = req.params;
-        console.log(userprofile)
+        
 
     const UserProfile = await UploadProfileModel.findById(userprofile);
    
