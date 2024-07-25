@@ -20,6 +20,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Affiliation is required"],
   },
+
+
+  profile:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Userprofile',
+  }
 });
 
 const UserModel = mongoose.model("User", UserSchema);
