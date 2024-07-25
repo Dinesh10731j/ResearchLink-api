@@ -11,7 +11,7 @@ const GetResearchPaper = async ()=>{
         return res.status(200).json({msg:"Rsearch paper fetch successfully",success:true})
 
     }catch(err){
-        res.send(500).json({msg:'Internal server error',success:false},err)
+        res.status(500).json({msg:'Internal server error',success:false},err)
     }
 }
 
