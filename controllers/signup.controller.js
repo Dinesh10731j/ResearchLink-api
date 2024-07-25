@@ -26,12 +26,12 @@ const UserSignup = async (req, res) => {
 
 
    
-    res.status(201).send({ data: user, success: true });
+    res.status(201).json({ data: user, success: true });
   } catch (err) {
     console.error("Error creating user:", err);
     res
       .status(500)
-      .send({
+      .json({
         msg: "Internal server error",
         success: false,
         error: err.message,

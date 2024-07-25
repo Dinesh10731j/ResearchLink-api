@@ -10,16 +10,16 @@ const GetUserProfile = async (req,res)=>{
    
 
     if(!UserProfile){
-        return res.status(404).send({msg:'User not found',success:false})
+        return res.status(404).json({msg:'User not found',success:false})
     }
 
 
-    return res.status(200).send({msg:'User profile fetch successfully',data:UserProfile});
+    return res.status(200).json({msg:'User profile fetch successfully',data:UserProfile});
 
 
     }catch(err){
 
-        res.status(500).send({msg:'Internal server error',success:false},err);
+        res.status(500).json({msg:'Internal server error',success:false},err);
 
     }
 

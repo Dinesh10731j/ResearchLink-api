@@ -46,7 +46,7 @@ const UserLogin = async (req, res) => {
     });
     
   } catch (err) {
-    res.status(500).send({ msg: "Internal sever error", success: true }, err);
+    res.status(500).json({ msg: "Internal sever error", success: true }, err);
   }
 };
 

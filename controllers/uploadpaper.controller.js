@@ -9,10 +9,10 @@ const UploadPaper = async (req, res) => {
     });
 
     res
-      .status(201)
-      .send({ msg: "Research paper uploaded successfully!", success: true });
+      .json(201)
+      .json({ msg: "Research paper uploaded successfully!", success: true });
   } catch (err) {
-    res.status(500).send({ msg: "Internal server error", success: false });
+    res.status(500).json({ msg: "Internal server error", success: false });
   }
 };
 

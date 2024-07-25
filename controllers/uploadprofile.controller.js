@@ -9,10 +9,10 @@ const UploadProfile = async (req,res) =>{
 
         const UserProfile = await UploadProfileModel.create({profile});
 
-        res.status(201).send({msg:'User profile uploaded successfully',data:UserProfile,success:true});
+        res.status(201).json({msg:'User profile uploaded successfully',data:UserProfile,success:true});
 
     }catch(err){
-res.status(500).send({msg:'Internal server error',success:false,error:err})
+res.status(500).json({msg:'Internal server error',success:false,error:err})
     }
 
    
