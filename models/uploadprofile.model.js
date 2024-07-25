@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const UploadprofileSchema = new mongoose.Schema({
     profile:String,
+},{
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:'UserModel'
+    }
 });
 
 
