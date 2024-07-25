@@ -2,12 +2,13 @@ const UserModel = require("../models/signup.model");
 const bcrypt = require("bcryptjs");
 
 
+
 const UserSignup = async (req, res) => {
   try {
     const { name, email, password, affiliation } = req.body;
     
 
-    const AlreadyExists = await UserModel.findOne({email});
+    const AlreadyExists = await UserModel.findOne({email})
 
 
     if(AlreadyExists){
@@ -22,6 +23,7 @@ const UserSignup = async (req, res) => {
       email: email,
       password:hashedPassword,
       affiliation: affiliation,
+   
     });
 
 
