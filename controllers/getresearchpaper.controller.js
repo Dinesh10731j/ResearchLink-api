@@ -1,6 +1,6 @@
 
 const UploadResearchPaperModel = require("../controllers/uploadpaper.controller");
-const GetResearchPaper = async ()=>{
+const GetResearchPaper = async (req,res)=>{
     try{
         const ResearchPapers = await UploadResearchPaperModel.find({});
         if(ResearchPapers.length === 0){
