@@ -23,10 +23,9 @@ const UserSchema = new Schema({
   },
 
 
-  profile:{
-    type:[{ type: Schema.Types.ObjectId,ref:'Userprofile' }],
+  profile:[{ type: Schema.Types.ObjectId,ref:'Userprofile' }],
    
-  }
+  
 });
 
 const UserModel = mongoose.model("User", UserSchema);

@@ -6,7 +6,7 @@ const GetUserProfile = async (req,res)=>{
         const {userprofile} = req.params;
         
 
-    const UserProfile = await UploadProfileModel.findById(userprofile).populate('User');
+    const UserProfile = await UploadProfileModel.findById(userprofile).populate('user');
    
 
     if(!UserProfile){
