@@ -19,7 +19,7 @@ const GetUserProfile = async (req,res)=>{
 
     }catch(err){
 
-        res.status(500).json({msg:'Internal server error',success:false},err);
+        res.status(500).json({msg:'Internal server error',success:false,error:err});
 
     }
 
