@@ -6,7 +6,7 @@ const UploadPaper = async (req, res) => {
       title: title,
       description: description,
       researchpaper: file,
-      userId:['Kcha bhai thik xa ni'],
+     
     });
 
     res

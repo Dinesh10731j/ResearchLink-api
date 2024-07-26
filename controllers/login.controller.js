@@ -9,7 +9,7 @@ const UserLogin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const LoginUser = await UserModel.findOne({ email }).populate('profile');
+    const LoginUser = await UserModel.findOne({ email }).populate('profile','profile');
 
 
     if (!LoginUser) {
