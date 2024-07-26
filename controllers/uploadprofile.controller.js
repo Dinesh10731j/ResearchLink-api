@@ -9,7 +9,7 @@ const UploadProfile = async (req, res) => {
 
    
 
-    res.status(201).json({ msg: 'User profile uploaded successfully', data: UserProfile, success: true,model:newModel });
+    res.status(201).json({ msg: 'User profile uploaded successfully', data: UserProfile, success: true});
   } catch (err) {
     res.status(500).json({ msg: 'Internal server error', success: false, error: err.message });
   }
