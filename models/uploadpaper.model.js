@@ -19,9 +19,7 @@ const UploadSchema = new mongoose.Schema({
     type:Date,
     default:Date.now,
   },  
-
-  userId:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
-});
+},{timestamps:true});
 
 const UploadResearchPaperModel = mongoose.model("Researchpaper", UploadSchema);
 

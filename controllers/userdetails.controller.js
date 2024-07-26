@@ -3,8 +3,8 @@ const UserModel = require("../models/signup.model");
 const Userdetails = async (req, res) => {
   const { userid } = req.params;
   try {
-    // Populate the profile field in the user details
-    const userdetails = await UserModel.findById(userid).populate({path:'profile'});
+ 
+    const userdetails = await UserModel.findById(userid);
 
     if (!userdetails) {
       return res.status(404).json({ msg: 'User not found', success: false });

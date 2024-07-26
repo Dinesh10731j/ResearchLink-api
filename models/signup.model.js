@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +18,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Affiliation is required"],
   },
-  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'UserProfile' }
+  profile: {
+    type: String,
+    required: [true, "Profile is required"],
+  },
+  profilePicture: {
+    type: String,
+  },
+
+
+  researchField:{
+    type:String,
+    required:[true,'Research field is required']
+
+  }
 });
 
 const UserModel = mongoose.model("User", UserSchema);
