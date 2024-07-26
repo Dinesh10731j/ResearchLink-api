@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
-const {Schema} = mongoose
+const { Schema } = mongoose;
 
-const UploadprofileSchema = new Schema({
-    profile:String,
-},);
+const UploadProfileSchema = new Schema({
+  profile: String,
+});
 
-
-const UploadProfileModel = mongoose.model('Userprofile',UploadprofileSchema);
-
+const UploadProfileModel = mongoose.model('UserProfile', UploadProfileSchema);
 
 module.exports = UploadProfileModel;

@@ -1,31 +1,25 @@
 const mongoose = require("mongoose");
-const {Schema} = mongoose
+const { Schema } = mongoose;
+
 const UserSchema = new Schema({
   name: {
     type: String,
     required: [true, "Name is required"],
   },
-
   email: {
     type: String,
     required: [true, "E-mail is required"],
     unique: true,
   },
-
   password: {
     type: String,
     required: [true, "Password is required"],
   },
-
   affiliation: {
     type: String,
     required: [true, "Affiliation is required"],
   },
-
-
-  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'UploadProfile' }
-   
-  
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'UserProfile' }
 });
 
 const UserModel = mongoose.model("User", UserSchema);
