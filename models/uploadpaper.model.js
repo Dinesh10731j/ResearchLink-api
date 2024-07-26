@@ -20,7 +20,7 @@ const UploadSchema = new mongoose.Schema({
     default:Date.now,
   },  
 
-  userId:{type:mongoose.Schema.Types.ObjectId,ref:'User'}
+  userId:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
 });
 
 const UploadResearchPaperModel = mongoose.model("Researchpaper", UploadSchema);
