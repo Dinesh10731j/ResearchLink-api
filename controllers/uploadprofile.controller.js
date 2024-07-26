@@ -1,4 +1,5 @@
 const UploadProfileModel = require('../models/uploadprofile.model');
+const UserModel = require('../models/signup.model')
 
 const UploadProfile = async (req, res) => {
   try {
@@ -6,7 +7,11 @@ const UploadProfile = async (req, res) => {
 
     const UserProfile = await UploadProfileModel.create({ profile });
 
-    res.status(201).json({ msg: 'User profile uploaded successfully', data: UserProfile, success: true });
+    const newModel = new UserModel({
+        profile:UserProfile._id
+    })
+
+    res.status(201).json({ msg: 'User profile uploaded successfully', data: UserProfile, success: true,model:newModel });
   } catch (err) {
     res.status(500).json({ msg: 'Internal server error', success: false, error: err.message });
   }
