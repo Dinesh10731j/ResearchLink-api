@@ -2,7 +2,7 @@ const UploadResearchPaperModel = require("../models/uploadpaper.model");
 
 const GetResearchPaper = async (req, res) => {
     try {
-        const ResearchPapers = await UploadResearchPaperModel.find({});
+        const ResearchPapers = await UploadResearchPaperModel.find({}).populate("userId");
         if (ResearchPapers.length === 0) {
             return res.status(404).json({ msg: "Research papers not found", success: false });
         }
