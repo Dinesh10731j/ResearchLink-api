@@ -1,11 +1,12 @@
 const UploadResearchPaperModel = require("../models/uploadpaper.model");
 const UploadPaper = async (req, res) => {
   try {
-    const { title, description, file} = req.body;
+    const { title, description, file,userId} = req.body;
     await UploadResearchPaperModel.create({
       title: title,
       description: description,
       researchpaper: file,
+      userId:userId
      
     });
 

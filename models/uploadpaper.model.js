@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const UploadSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "Ttile is required"],
+    required: [true, "Title is required"],
   },
 
   description: {
