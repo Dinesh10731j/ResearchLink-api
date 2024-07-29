@@ -9,7 +9,7 @@ const ResearchLinkUsers = async (req, res) => {
 
     return res
       .status(200)
-      .json({ msg: "All ResearchLink Users", success: true });
+      .json({ msg: "All ResearchLink Users",data:Researchlinkusers, success: true });
   } catch (err) {
     res
       .status(500)
