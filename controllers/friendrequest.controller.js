@@ -9,8 +9,7 @@ const FriendRequest = async (req, res) => {
       sender: requestsenderid,
       receiver: requestreceiverid,
     })
-      .populate("sender", "name profilePicture affiliation researchField")
-      .populate("receiver", "name profilePicture affiliation researchField");
+   
 
     if (AlreadyRequestSend) {
       return res
@@ -28,14 +27,13 @@ const FriendRequest = async (req, res) => {
     await newFriendRequest.save();
 
     // Populate the sender and receiver details
-    const populatedFriendRequest = await FriendRequestModel.findById(newFriendRequest._id)
-      .populate("sender", "name profilePicture affiliation researchField")
-      .populate("receiver", "name profilePicture affiliation researchField");
+  await FriendRequestModel.findById(newFriendRequest._id)
+     
 
     if (populatedFriendRequest) {
       return res
         .status(201)
-        .json({ msg: "Friend request sent successfully", success: true, data: populatedFriendRequest });
+        .json({ msg: "Friend request sent successfully", success: true, });
     }
 
     // If creating the friend request failed for some reason
