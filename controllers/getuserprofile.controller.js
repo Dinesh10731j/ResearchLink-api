@@ -6,7 +6,7 @@ const GetUserProfile = async (req,res)=>{
 
         const {id} = req.body;
 
-        const Userprofile = await UserModel.find(id);
+        const Userprofile = await UserModel.findById(id);
 
         if(Userprofile.length === 0){
             return res.status(400).json({msg:'Userprofile not found',success:false})
