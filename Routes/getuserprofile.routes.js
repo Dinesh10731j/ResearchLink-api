@@ -4,6 +4,7 @@ const express = require("express");
 const UserProfileRoute = express.Router();
 
 
-UserProfileRoute.get("/user-profile/:id");
+UserProfileRoute.get("/user-profile/:id",GetUserProfile);
 
 module.exports = UserProfileRoute;
+
