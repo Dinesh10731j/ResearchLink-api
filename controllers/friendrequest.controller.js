@@ -8,8 +8,7 @@ const FriendRequest = async (req, res) => {
     const AlreadyRequestSend = await FriendRequestModel.findOne({
       sender: requestsenderid,
       receiver: requestreceiverid,
-    })
-   
+    });
 
     if (AlreadyRequestSend) {
       return res
@@ -27,13 +26,14 @@ const FriendRequest = async (req, res) => {
     await newFriendRequest.save();
 
     // Populate the sender and receiver details
-  await FriendRequestModel.findById(newFriendRequest._id)
-     
+    const populatedFriendRequest = await FriendRequestModel.findById(newFriendRequest._id)
+      .populate('sender', 'name affiliation profile profilePicture')
+      .populate('receiver', 'name affiliation profile profilePicture');
 
     if (populatedFriendRequest) {
       return res
         .status(201)
-        .json({ msg: "Friend request sent successfully", success: true, });
+        .json({ msg: "Friend request sent successfully", success: true, request: populatedFriendRequest });
     }
 
     // If creating the friend request failed for some reason
