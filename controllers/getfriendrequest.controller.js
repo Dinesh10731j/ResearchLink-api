@@ -1,5 +1,5 @@
 const FriendRequestModel = require("../models/friendrequest.model")
-const GetFriendRequest = async ()=>{
+const GetFriendRequest = async (req,res)=>{
     try{
 const allfriendrequests = await FriendRequestModel.find({}).populate('sender','name affiliation profile profilePicture').
 populate('receiver','name affiliation profile profilePicture');
