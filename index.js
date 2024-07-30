@@ -10,7 +10,8 @@ const UserDetailsRouter = require("./Routes/userdetails.routes");
 const GetResearchPaperRoute = require("./Routes/getresearchpaper.routes");
 const ResearchLinkUsersRoutes = require("./Routes/getresearchlinkusers.routes");
 const FriendRequestRoute = require("./Routes/friendrequest.routes");
-const GetFriendRequestRoute = require("./Routes/getfriendrequest.routes")
+const GetFriendRequestRoute = require("./Routes/getfriendrequest.routes");
+const UserProfileRoute = require("./Routes/getuserprofile.routes");
 const cors = require("cors");
 dotenv.config();
 
@@ -27,6 +28,7 @@ server.use("/api",GetResearchPaperRoute);
 server.use("/api",ResearchLinkUsersRoutes);
 server.use("/api",FriendRequestRoute);
 server.use("/api",GetFriendRequestRoute);
+server.use("/api",UserProfileRoute);
 DbConn().then(() => {
   server.listen(Port, () => {
     console.log(`Server is listening to port:${Port}`);
