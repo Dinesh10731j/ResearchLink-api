@@ -4,11 +4,11 @@ const GetUserProfile = async (req,res)=>{
     
     try{
 
-        const {id} = req.body;
-        console.log('This is userid',id)
+        const {id} = req.params;
+       
 
-        const Userprofile = await UserModel.findById({id});
-        console.log('')
+        const Userprofile = await UserModel.findById(id);
+      
         
 
         if(!Userprofile){
