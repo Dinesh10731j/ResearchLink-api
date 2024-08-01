@@ -2,6 +2,7 @@ const UploadResearchPaperModel = require("../models/uploadpaper.model");
 const UserActivities = async (req, res) => {
   try {
     const { userid } = req.params;
+    console.log('This is userid',userid)
 
     const Activities = await UploadResearchPaperModel.findById(userid);
     if (!Activities) {
