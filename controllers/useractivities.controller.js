@@ -1,10 +1,10 @@
 const UploadResearchPaperModel = require("../models/uploadpaper.model");
 const UserActivities = async (req, res) => {
   try {
-    const { userid } = req.params;
+  
  
 
-    const Activities = await UploadResearchPaperModel.find({userId:userid})
+    const Activities = await UploadResearchPaperModel.find({userId:req.params});
   
     if (Activities.length === 0) {
       return res.status(400).json({ msg: "User activities not found" });
