@@ -6,7 +6,19 @@ const UserActivities = async (req, res) => {
     const { userid } = req.params;
 
 
-    const activities = await UploadResearchPaperModel.findOne({userId:userid});
+    const activities = await UploadResearchPaperModel.aggregate([
+
+{
+  $match:{
+    userId:userid
+  }
+}
+
+    ]
+
+
+
+    );
     if (activities.length === 0) {
 
       return res.status(400).json({ msg: "User activities not found" });
