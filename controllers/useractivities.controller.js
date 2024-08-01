@@ -5,7 +5,6 @@ const UserActivities = async (req, res) => {
   try {
     const { userid } = req.params;
 
-    console.log('Type of user id is ',typeof(userid))
 
     const activities = await UploadResearchPaperModel.findOne({userId:userid});
     if (activities.length === 0) {
