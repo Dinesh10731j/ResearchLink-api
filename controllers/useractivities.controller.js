@@ -10,12 +10,11 @@ const UserActivities = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(userid)) {
       return res.status(400).json({ msg: "Invalid user ID format" });
     }
-    const objectId = mongoose.Types.ObjectId(userid);
 
     const activities = await UploadResearchPaperModel.aggregate([
       {
         $match: {
-          userId: objectId // Convert userid to ObjectId
+          userId: new mongoose.Types.ObjectId(userid) // Convert userid to ObjectId
         }
       }
     ]);
