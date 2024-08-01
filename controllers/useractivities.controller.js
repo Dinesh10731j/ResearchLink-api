@@ -10,7 +10,7 @@ const UserActivities = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(userid)) {
       return res.status(400).json({ msg: "Invalid user ID format" });
     }
-    const objectId = new mongoose.Schema.ObjectId(userid);
+    const objectId = mongoose.Types.ObjectId(userid);
 
     const activities = await UploadResearchPaperModel.find({ userId: objectId });
     if (activities.length === 0) {
