@@ -5,7 +5,8 @@ const UserActivities = async (req, res) => {
  
 
     const Activities = await UploadResearchPaperModel.find({userId:userid})
-    if (!Activities) {
+  
+    if (Activities.length === 0) {
       return res.status(400).json({ msg: "User activities not found" });
     }
 
