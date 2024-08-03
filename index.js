@@ -1,5 +1,5 @@
 const express = require("express");
-const server = express();
+const http = require("http");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const DbConn = require("./utils/dbconn");
@@ -13,26 +13,34 @@ const FriendRequestRoute = require("./Routes/friendrequest.routes");
 const GetFriendRequestRoute = require("./Routes/getfriendrequest.routes");
 const UserProfileRoute = require("./Routes/getuserprofile.routes");
 const UserActivitiesRoute = require("./Routes/useractivities.routes");
+const { initializeSocket } = require("./controllers/chat.controller"); 
 const cors = require("cors");
 dotenv.config();
 
+const app = express();
+const server = http.createServer(app);
+initializeSocket(server); 
+
 const Port = process.env.PORT || 1000;
 
-server.use(morgan("combined"));
-server.use(express.json());
-server.use(cors());
-server.use("/api", UserSignupRoute);
-server.use("/api", LoginRoute);
-server.use("/api", UploadPaperRoute);
-server.use("/api",UserDetailsRouter);
-server.use("/api",GetResearchPaperRoute);
-server.use("/api",ResearchLinkUsersRoutes);
-server.use("/api",FriendRequestRoute);
-server.use("/api",GetFriendRequestRoute);
-server.use("/api",UserProfileRoute);
-server.use("/api",UserActivitiesRoute);
+app.use(morgan("combined"));
+app.use(express.json());
+app.use(cors());
+
+app.use("/api", UserSignupRoute);
+app.use("/api", LoginRoute);
+app.use("/api", UploadPaperRoute);
+app.use("/api", UserDetailsRouter);
+app.use("/api", GetResearchPaperRoute);
+app.use("/api", ResearchLinkUsersRoutes);
+app.use("/api", FriendRequestRoute);
+app.use("/api", GetFriendRequestRoute);
+app.use("/api", UserProfileRoute);
+app.use("/api", UserActivitiesRoute);
+
+
 DbConn().then(() => {
   server.listen(Port, () => {
-    console.log(`Server is listening to port:${Port}`);
+    console.log(`Server is listening to port: ${Port}`);
   });
 });
