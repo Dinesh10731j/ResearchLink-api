@@ -10,7 +10,7 @@ const UserStats = async (req, res) => {
     }
 
     const userStats = await UploadResearchPaperModel.aggregate([
-      { $match: { userId: mongoose.Types.ObjectId(userid) } },
+      { $match: { userId: new mongoose.Types.ObjectId(userid) } },
       {
         $group: {
           _id: {
