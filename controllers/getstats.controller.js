@@ -3,25 +3,24 @@ const mongoose = require('mongoose');
 
 const UserStats = async (req, res) => {
   try {
-    const { userid } = req.body;
+    const { userid } = req.params;
 
     if (!userid) {
       return res.status(400).json({ msg: 'User ID is required', success: false });
     }
 
-    // Aggregating the number of research papers published by month and year
     const userStats = await UploadResearchPaperModel.aggregate([
-      { $match: { userId: mongoose.Types.ObjectId(userid) } }, // Match documents with the given user ID
+      { $match: { userId: mongoose.Types.ObjectId(userid) } },
       {
         $group: {
           _id: {
             year: { $year: "$publishedDate" },
             month: { $month: "$publishedDate" }
           },
-          count: { $sum: 1 } // Count the number of documents
+          count: { $sum: 1 } 
         }
       },
-      { $sort: { "_id.year": 1, "_id.month": 1 } } // Sort by year and month
+      { $sort: { "_id.year": 1, "_id.month": 1 } } 
     ]);
 
     res.status(200).json({
