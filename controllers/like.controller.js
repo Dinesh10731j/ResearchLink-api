@@ -21,7 +21,7 @@ const UserLikes = async (req, res) => {
 
     res
       .status(201)
-      .json({ msg: "Liked successfully", success: true, userlike });
+      .json({ msg: "Liked successfully", success: true, data:userlike });
   } catch (err) {
     res
       .status(500)
