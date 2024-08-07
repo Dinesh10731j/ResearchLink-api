@@ -1,5 +1,6 @@
 const LikeModel = require("../models/like.model");
 const DisLikeModel = require("../models/dislike.model");
+const UploadResearchPaperModel = require("../models/uploadpaper.model"); // Assuming you have a model for research papers
 
 const UserLikes = async (req, res) => {
   try {
@@ -19,17 +20,25 @@ const UserLikes = async (req, res) => {
     // Create a new like
     const userlike = await LikeModel.create({ userid, likeid: like });
 
-    res
-      .status(201)
-      .json({ msg: "Liked successfully", success: true, data:userlike });
+    // Increment the like count on the research paper
+    await UploadResearchPaperModel.findByIdAndUpdate(like, { $inc: { likeCount: 1 } });
+
+    // Get the updated total number of likes for the research paper
+    const researchPaper = await UploadResearchPaperModel.findById(like);
+    const totalLikes = researchPaper.likeCount;
+
+    res.status(201).json({
+      msg: "Liked successfully",
+      success: true,
+      data: userlike,
+      totallikes:totalLikes, // Include the total likes in the response
+    });
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        msg: "Internal server error",
-        error: err.message,
-        success: false,
-      });
+    res.status(500).json({
+      msg: "Internal server error",
+      error: err.message,
+      success: false,
+    });
   }
 };
 
