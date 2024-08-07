@@ -13,14 +13,16 @@ const FriendRequestRoute = require("./Routes/friendrequest.routes");
 const GetFriendRequestRoute = require("./Routes/getfriendrequest.routes");
 const UserProfileRoute = require("./Routes/getuserprofile.routes");
 const UserActivitiesRoute = require("./Routes/useractivities.routes");
-const UserStatsRoutes = require("./Routes/userstats.routes")
-const { initializeSocket } = require("./controllers/chat.controller"); 
+const UserStatsRoutes = require("./Routes/userstats.routes");
+const DisLikesRoutes = require("./Routes/dislikes.routes");
+const LikesRoutes = require("./Routes/likes.routes");
+const { initializeSocket } = require("./controllers/chat.controller");
 const cors = require("cors");
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-initializeSocket(server); 
+initializeSocket(server);
 
 const Port = process.env.PORT || 1000;
 
@@ -38,8 +40,9 @@ app.use("/api", FriendRequestRoute);
 app.use("/api", GetFriendRequestRoute);
 app.use("/api", UserProfileRoute);
 app.use("/api", UserActivitiesRoute);
-app.use("/api",UserStatsRoutes);
-
+app.use("/api", UserStatsRoutes);
+app.use("/api", DisLikesRoutes);
+app.use("/api", LikesRoutes);
 
 DbConn().then(() => {
   server.listen(Port, () => {
