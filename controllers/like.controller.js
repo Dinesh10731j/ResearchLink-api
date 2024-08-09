@@ -6,7 +6,6 @@ const UserLikes = async (req, res) => {
   try {
     const { userid, like } = req.body;
 
-    // Check if the user already liked the research paper
     const existingLike = await LikeModel.findOne({ userid, likeid: like });
     if (existingLike) {
       return res
@@ -17,13 +16,12 @@ const UserLikes = async (req, res) => {
     // Remove dislike if it exists
     await DisLikeModel.findOneAndDelete({ userid, likeid: like });
 
-    // Create a new like
     const userlike = await LikeModel.create({ userid, likeid: like });
 
-    // Increment the like count on the research paper
+    // Increment of like count on the research paper
     await UploadResearchPaperModel.findByIdAndUpdate(like, { $inc: { likeCount: 1 } });
 
-    // Get the updated total number of likes for the research paper
+   // updated total number of likes for the research paper
     const researchPaper = await UploadResearchPaperModel.findById(like);
     const totalLikes = researchPaper.likeCount;
 
@@ -31,7 +29,7 @@ const UserLikes = async (req, res) => {
       msg: "Liked successfully",
       success: true,
       data: userlike,
-      totallikes:totalLikes, // Include the total likes in the response
+      totallikes:totalLikes, // total likes in the response
     });
   } catch (err) {
     res.status(500).json({

@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 const DisLikeSchema = new mongoose.Schema({
+
+    dislikes:{
+        type:Number,
+        default:0,
+
+    },
     likeid:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Researchpaper',
@@ -7,7 +13,9 @@ const DisLikeSchema = new mongoose.Schema({
     userid:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User', 
-    }
+    },
+
+
 },{timestamps:true});
 
 

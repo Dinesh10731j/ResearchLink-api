@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const LikeSchema = new mongoose.Schema({
+    likes:{
+
+default:0,
+    },
     likeid:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Researchpaper',
