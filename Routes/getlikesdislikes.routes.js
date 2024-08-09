@@ -3,7 +3,7 @@ const express = require("express");
 
 const LikesDislikesRoutes = express.Router();
 
-LikesDislikesRoutes.get("/likesdislikes/:paperId",getLikesAndDisLikes);
+LikesDislikesRoutes.get("/getlikesdislikes/:paperId",getLikesAndDisLikes);
 
 module.exports = LikesDislikesRoutes;
 
