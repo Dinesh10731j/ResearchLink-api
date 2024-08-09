@@ -4,8 +4,8 @@ const UploadResearchPaperModel = require("../models/uploadpaper.model");
 
 const getLikesAndDisLikes = async (req, res) => {
   try {
-    const { paperId } = req.params; // Assuming the research paper ID is passed as a parameter
-    console.log('This is paperId',paperId);
+    const { paperId } = req.params; 
+ 
 
     if (!paperId) {
       return res.status(400).json({ msg: "Research paper ID is required", success: false });
@@ -18,8 +18,8 @@ const getLikesAndDisLikes = async (req, res) => {
     }
 
     // Count likes and dislikes for the specific research paper
-    const totalLikes = await LikeModel.countDocuments({ likeid: paperId });
-    const totalDislikes = await DisLikeModel.countDocuments({ likeid: paperId });
+    const totalLikes = await LikeModel.countDocuments({likes:paperId});
+    const totalDislikes = await DisLikeModel.countDocuments({dislikes:paperId });
 
     return res.status(200).json({
       msg: "Likes and Dislikes fetched successfully",
