@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const LikeSchema = new mongoose.Schema({
     likes:{
-
+type:Number,
 default:0,
     },
     likeid:{
