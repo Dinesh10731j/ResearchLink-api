@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const DisLikeSchema = new mongoose.Schema({
 
     dislikes:{
-        type:Number,
+        type:String,
         default:0,
 
     },
