@@ -28,7 +28,7 @@ const getLikesAndDisLikes = async (req, res) => {
         researchPaperId: paperId,
         title: researchPaper.title,
         totallikes:totalLikes,
-        totallikes:totalDislikes,
+        totaldislikes:totalDislikes,
       },
     });
   } catch (err) {
