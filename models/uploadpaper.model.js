@@ -19,8 +19,8 @@ const UploadSchema = new mongoose.Schema({
     type:Date,
     default:Date.now,
   },
-  likeCount:[] , 
-dislikeCount:[] ,
+  likeCount: { type: [String], default: [] },
+  dislikeCount: { type: [String], default: [] },
   
   userId:{
     type:mongoose.Schema.Types.ObjectId,
