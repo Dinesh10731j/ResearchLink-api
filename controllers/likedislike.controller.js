@@ -15,8 +15,8 @@ const likesDislikes = async (req, res) => {
     }
 
   
-    const isLiked = paper.likes.includes(userId);
-    const isDisliked = paper.dislikes.includes(userId);
+    const isLiked = paper.likeCount.includes(userId);
+    const isDisliked = paper.dislikeCount.includes(userId);
 
    
     if (isLiked) {
