@@ -1,3 +1,4 @@
+const UploadResearchPaperModel = require('../models/uploadpaper.model');
 const likesDislikes = async (req, res) => {
     try {
       const { paperId, userId } = req.body;
