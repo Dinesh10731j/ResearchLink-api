@@ -1,4 +1,4 @@
-import UploadResearchPaperModel from "../models/uploadpaper.model";
+const  UploadResearchPaperModel = require("../models/uploadpaper.model") ;
 
 const likesDislikes = async (req, res) => {
   try {
@@ -26,7 +26,6 @@ const likesDislikes = async (req, res) => {
      
       paper.likeCount.push(userId);
 
-      // If the user had disliked the paper, remove them from dislikes
       if (isDisliked) {
         paper.dislikeCount = paper.dislikeCount.filter((id) => id !== userId);
       }
@@ -58,5 +57,4 @@ const likesDislikes = async (req, res) => {
     });
   }
 };
-
-export default likesDislikes;
+module.exports = likesDislikes;
