@@ -37,7 +37,7 @@ const likesDislikes = async (req, res) => {
       paper.dislikeCount = paper.dislikeCount.filter((id) => id !== userId);
     } else if (!isLiked && !isDisliked) {
       
-      paper.dislikes.push(userId);
+      paper.dislikeCount.push(userId);
     }
 
    
