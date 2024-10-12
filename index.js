@@ -40,7 +40,7 @@ app.use("/api", GetFriendRequestRoute);
 app.use("/api", UserProfileRoute);
 app.use("/api", UserActivitiesRoute);
 app.use("/api", UserStatsRoutes);
-app.use("api",LikesDislikeRoute);
+app.use("/api",LikesDislikeRoute);
 
 
 DbConn().then(() => {
