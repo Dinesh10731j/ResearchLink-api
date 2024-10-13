@@ -14,13 +14,13 @@ const Dislikes = async (req, res) => {
     if (!paper) {
       return res.status(404).json({ msg: 'Paper not found' });
     }
-
+    const userObjectId = mongoose.Types.ObjectId(userId);
    
     if (!Array.isArray(paper.dislikeCount)) {
       paper.dislikeCount = [];
     }
 
-    const isDisliked = paper.dislikeCount.includes(userId);
+    const isDisliked = paper.dislikeCount.includes(userObjectId);
 
   
     if (isDisliked) {
