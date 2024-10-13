@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+
 const UploadResearchPaperModel = require('../models/uploadpaper.model');
 
 const Dislikes = async (req, res) => {
@@ -22,11 +22,11 @@ const Dislikes = async (req, res) => {
       paper.dislikeCount = [];
     }
 
-    const isDisliked = paper.dislikeCount.some(id => id.equals(userId));
+    const isDisliked = paper.dislikeCount.includes(userId);
 
  
     if (isDisliked) {
-      paper.dislikeCount = paper.dislikeCount.filter(id => !id.equals(userId));
+        paper.dislikeCount = paper.dislikeCount.filter(id => id !== userId)
     } else {
       paper.dislikeCount.push(userId);
     }
