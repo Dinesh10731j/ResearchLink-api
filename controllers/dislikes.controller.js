@@ -10,7 +10,7 @@ const Dislikes = async (req, res) => {
     }
 
     
-    const userObjectId = mongoose.Types.ObjectId(userId);
+    const userObjectId = new mongoose.Types.ObjectId(userId);
 
 
     const paper = await UploadResearchPaperModel.findById(paperId);
