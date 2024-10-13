@@ -35,6 +35,13 @@ const UploadSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+UploadSchema.pre('save', async function(next) {
+
+  this.likeCount = this.likeCount.map(id => mongoose.Types.ObjectId(id));
+  this.dislikeCount = this.dislikeCount.map(id => mongoose.Types.ObjectId(id));
+  next();
+});
+
 const UploadResearchPaperModel = mongoose.model("Researchpaper", UploadSchema);
 
 module.exports = UploadResearchPaperModel;

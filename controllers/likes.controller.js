@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+
 const UploadResearchPaperModel = require('../models/uploadpaper.model');
 
 const Likes = async (req, res) => {
