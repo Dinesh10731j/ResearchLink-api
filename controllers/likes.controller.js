@@ -17,20 +17,20 @@ const Likes = async (req, res) => {
     }
 
    
-    const userObjectId = new mongoose.Types.ObjectId(userId);
+  
 
   
     if (!Array.isArray(paper.likeCount)) {
       paper.likeCount = [];
     }
 
-    const isLiked = paper.likeCount.includes(userObjectId);
+    const isLiked = paper.likeCount.includes(userId);
 
     
     if (isLiked) {
-      paper.likeCount = paper.likeCount.filter(id => !id.equals(userObjectId));
+      paper.likeCount = paper.likeCount.filter(id => !id.equals(userId));
     } else {
-      paper.likeCount.push(userObjectId);
+      paper.likeCount.push(userId);
     }
 
   

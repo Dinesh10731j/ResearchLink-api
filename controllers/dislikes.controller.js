@@ -10,7 +10,7 @@ const Dislikes = async (req, res) => {
     }
 
     
-    const userObjectId = new mongoose.Types.ObjectId(userId);
+  
 
 
     const paper = await UploadResearchPaperModel.findById(paperId);
@@ -22,13 +22,13 @@ const Dislikes = async (req, res) => {
       paper.dislikeCount = [];
     }
 
-    const isDisliked = paper.dislikeCount.some(id => id.equals(userObjectId));
+    const isDisliked = paper.dislikeCount.some(id => id.equals(userId));
 
  
     if (isDisliked) {
-      paper.dislikeCount = paper.dislikeCount.filter(id => !id.equals(userObjectId));
+      paper.dislikeCount = paper.dislikeCount.filter(id => !id.equals(userId));
     } else {
-      paper.dislikeCount.push(userObjectId);
+      paper.dislikeCount.push(userId);
     }
 
     
