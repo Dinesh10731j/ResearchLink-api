@@ -1,32 +1,39 @@
 const mongoose = require("mongoose");
 
-const UploadSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, "Title is required"],
-  },
+const UploadSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Title is required"],
+    },
 
-  description: {
-    type: String,
-  },
+    description: {
+      type: String,
+    },
 
-  researchpaper: {
-    type: String,
-    required: [true, "Reasearchpaper is required"],
-  },
+    researchpaper: {
+      type: String,
+      required: [true, "Reasearchpaper is required"],
+    },
 
-  publishedDate:{
-    type:Date,
-    default:Date.now,
+    publishedDate: {
+      type: Date,
+      default: Date.now,
+    },
+    likeCount: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] },
+    ],
+    dislikeCount: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] },
+    ],
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
-  likeCount: { type: [String], default: [] },
-  dislikeCount: { type: [String], default: [] },
-  
-  userId:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'User'
-  }
-},{timestamps:true});
+  { timestamps: true }
+);
 
 const UploadResearchPaperModel = mongoose.model("Researchpaper", UploadSchema);
 
