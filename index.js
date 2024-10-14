@@ -15,7 +15,8 @@ const UserProfileRoute = require("./Routes/getuserprofile.routes");
 const UserActivitiesRoute = require("./Routes/useractivities.routes");
 const UserStatsRoutes = require("./Routes/userstats.routes");
 const LikesRoute = require('./Routes/like.routes');
-const DislikesRoute = require("./Routes/dislikes.routes")
+const DislikesRoute = require("./Routes/dislikes.routes");
+const followerRoute = require("./Routes/followers.routes")
 const { initializeSocket } = require("./controllers/chat.controller");
 const cors = require("cors");
 dotenv.config();
@@ -43,6 +44,7 @@ app.use("/api", UserActivitiesRoute);
 app.use("/api", UserStatsRoutes);
 app.use("/api",LikesRoute);
 app.use("/api",DislikesRoute);
+app.use("/api",followerRoute);
 
 DbConn().then(() => {
   server.listen(Port, () => {
