@@ -40,7 +40,7 @@ const Followers = async (req, res) => {
 
         return res.status(200).json({ msg: 'User followed successfully', success: true });
     } catch (err) {
-        res.status(500).json({ msg: 'Internal server error', success: false });
+        res.status(500).json({ msg: 'Internal server error', success: false,error:err?.message });
     }
 };
 
