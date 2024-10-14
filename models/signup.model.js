@@ -31,7 +31,8 @@ const UserSchema = new mongoose.Schema({
     type:String,
     required:[true,'Research field is required']
 
-  }
+  },
+  followers:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}]
 });
 
 const UserModel = mongoose.model("User", UserSchema);

@@ -1,4 +1,4 @@
-const followersModel = require("../models/followers.model");
+
 const userModel = require("../models/signup.model");
 
 const Followers = async (req, res) => {
@@ -24,10 +24,10 @@ const Followers = async (req, res) => {
         .json({ msg: "Follower does not exist", success: false });
     }
 
-    let userFollowers = await followersModel.findOne({ userId });
+    let userFollowers = await userModel.findOne({ userId });
 
     if (!userFollowers) {
-      userFollowers = new followersModel({
+      userFollowers = new userModel({
         userId,
         followers: [],
       });
