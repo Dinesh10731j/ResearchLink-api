@@ -31,7 +31,7 @@ const editActivity = async (req, res) => {
     return res.status(200).json({
       msg: "Activity edited successfully",
       success: true,
-      data: editedData,
+     
     });
 
   } catch (err) {
